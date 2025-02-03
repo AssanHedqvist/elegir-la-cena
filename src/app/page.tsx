@@ -11,6 +11,7 @@ const mockUrl = [
 const mockImage = mockUrl.map((url, index) => ({
   id: index + 1,
   url,
+  
 }));
 
 export default async function HomePage() {
