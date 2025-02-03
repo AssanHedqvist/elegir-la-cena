@@ -8,6 +8,7 @@ import {
   pgTableCreator,
   timestamp,
   varchar,
+  date,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -18,17 +19,16 @@ import {
  */
 export const createTable = pgTableCreator((name) => `elegir-la-cena_${name}`);
 
-export const posts = createTable(
-  "post",
+export const recipes = createTable(
+  "recipe",
   {
     id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
     name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
+    ingredients: varchar("ingredients", { length: 4096 }),
+    instructions: varchar("instructions", { length: 4096 }),
+    date: date("date").default(sql`current_date`),
+    longblob: bytea("longblob"),
+    videoUrl: varchar("video_url", { length: 512 }),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
