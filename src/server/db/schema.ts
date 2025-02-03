@@ -9,6 +9,7 @@ import {
   timestamp,
   varchar,
   date,
+  foreignKey
 } from "drizzle-orm/pg-core";
 
 /**
@@ -29,7 +30,18 @@ export const recipes = createTable(
     date: date("date").default(sql`current_date`),
     videoUrl: varchar("video_url", { length: 512 }),
   },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+);
+export const recipeAuthors = createTable(
+  "author",
+  {
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+    name: varchar("name", { length: 128 }),
+  },
+);
+export const authorRecipes = createTable(
+  "author_recipe",
+  {
+    authorId: integer("author_id").references(() => recipeAuthors.id),
+    recipeId: integer("recipe_id").references(() => recipes.id),
+  },
 );
