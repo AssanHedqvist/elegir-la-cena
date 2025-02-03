@@ -27,7 +27,6 @@ export const recipes = createTable(
     ingredients: varchar("ingredients", { length: 4096 }),
     instructions: varchar("instructions", { length: 4096 }),
     date: date("date").default(sql`current_date`),
-    longblob: bytea("longblob"),
     videoUrl: varchar("video_url", { length: 512 }),
   },
   (example) => ({
