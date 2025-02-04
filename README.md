@@ -6,8 +6,8 @@
 - [x] Scaffold basic ui with mock data
 - [x] Setup postgres
 - [ ] custom type for longblob / bytea / byte[]
-- [ ] Attach db to UI
-- [ ] Add auth (clerk)
+- [x] Attach db to UI
+- [x] Add auth (clerk)
 - [ ] Error management
 - [ ] Analytics
 - [ ] Ratelimiting
