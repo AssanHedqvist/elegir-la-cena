@@ -11,11 +11,11 @@ const mockUrl = [
 const mockImage = mockUrl.map((url, index) => ({
   id: index + 1,
   url,
-  
+
 }));
 
 export default async function HomePage() {
-  const posts = await db.query.posts.findMany();
+  const posts = await db.query.recipe.findMany();
 
   return (
     <main className="">

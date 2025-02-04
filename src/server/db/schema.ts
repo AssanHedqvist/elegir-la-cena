@@ -20,7 +20,7 @@ import {
  */
 export const createTable = pgTableCreator((name) => `elegir-la-cena_${name}`);
 
-export const recipes = createTable(
+export const recipe = createTable(
   "recipe",
   {
     id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
@@ -42,6 +42,6 @@ export const authorRecipes = createTable(
   "author_recipe",
   {
     authorId: integer("author_id").references(() => recipeAuthors.id),
-    recipeId: integer("recipe_id").references(() => recipes.id),
+    recipeId: integer("recipe_id").references(() => recipe.id),
   },
 );
