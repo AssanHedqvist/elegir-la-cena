@@ -1,4 +1,4 @@
-# Dinner selector app
+# Creating a vite / react frontend with spring boot backend,  instead of next.js
 
 ## TODO
 
